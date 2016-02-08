@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery show and hide content</title>
+    <script src="jquery-1.12.0.min.js">
+    </script>
+    <script>
+        $(init)
+
+        var p1show = true;
+        var p2show = true;
+
+        function init(){
+            $("#title1").click(t1Click);
+            $("#title2").click(t2Click);
+
+        }
+        function t1Click(){
+            if(p1show){
+                $("#p1").hide(); /*grab p1 and hide it*/
+                p1show = false;
+            }else{
+                $("#p1").show();
+                p1show = true;
+            }
+
+
+        }
+
+        function t2Click(){
+            $("#p2").hide();
+        }
+    </script>
+
+</head>
+<body>
+<h1>Showing an hiding content with JQuery</h1>
+<h2 id="title1">Title1</h2>
+<p id="p1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Praesent ullamcorper dapibus eros, non dictum dolor imperdiet id.
+    Integer ex urna, semper in tristique vel, rutrum nec lacus.
+    In hac habitasse platea dictumst. Suspendisse ultrices,
+    quam bibendum tincidunt malesuada, eros nunc facilisis nisl, fermentum molestie dolor metus nec tortor.
+    Nulla a lacus et lacus porta luctus. Nulla volutpat nulla a odio bibendum, id dictum nibh lacinia.
+    Integer posuere lacus non lorem luctus dictum. Aliquam erat volutpat.
+    Quisque vitae purus in magna lacinia vestibulum nec vitae justo.
+</p>
+<h2 id="title2">Title2</h2>
+<p id="p2">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Praesent ullamcorper dapibus eros, non dictum dolor imperdiet id.
+    Integer ex urna, semper in tristique vel, rutrum nec lacus.
+    In hac habitasse platea dictumst. Suspendisse ultrices,
+    quam bibendum tincidunt malesuada, eros nunc facilisis nisl, fermentum molestie dolor metus nec tortor.
+    Nulla a lacus et lacus porta luctus. Nulla volutpat nulla a odio bibendum, id dictum nibh lacinia.
+    Integer posuere lacus non lorem luctus dictum. Aliquam erat volutpat.
+    Quisque vitae purus in magna lacinia vestibulum nec vitae justo.
+</p>
+
+</body>
+</html>

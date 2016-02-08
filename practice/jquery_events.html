@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Handle Events In JQuery</title>
+    <script src="jquery-1.12.0.min.js">
+    </script>
+    <script>
+        /*invoke jquery*/
+        $(init);
+        function init() {
+            /* if p1 is clicked, then invoke p1Clicked function*/
+            $("#p1").click(p1Clicked);
+            $("#ADD").click(addAandB);
+        }
+        function p1Clicked() {
+            /*grab the body and append more contend*/
+            $("body").append("<p>New Paragraph</p>");
+        }
+        function addAandB() {
+            var a = $("#A").val();
+            /*grab the value of A and store it*/
+            var b = $("#B").val();
+            var c = a + b;
+            $("#C").val(c);
+            /*grab c and set its value to c*/
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+<h1>handling events with jquery</h1>
+<p id="p1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Praesent ullamcorper dapibus eros, non dictum dolor imperdiet id.
+    Integer ex urna, semper in tristique vel, rutrum nec lacus.
+    In hac habitasse platea dictumst. Suspendisse ultrices,
+    quam bibendum tincidunt malesuada, eros nunc facilisis nisl, fermentum molestie dolor metus nec tortor.
+    Nulla a lacus et lacus porta luctus. Nulla volutpat nulla a odio bibendum, id dictum nibh lacinia.
+    Integer posuere lacus non lorem luctus dictum. Aliquam erat volutpat.
+    Quisque vitae purus in magna lacinia vestibulum nec vitae justo.
+</p>
+<input id="A"/>
+<input id="B"/>
+<button id="ADD">Add A and B</button>
+<input id="C"/>
+</body>
+</html>

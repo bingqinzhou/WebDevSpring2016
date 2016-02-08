@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulating the DOM with JQuery</title>
+    <script src="jquery-1.12.0.min.js">
+    </script>
+    <script>
+        $(init);
+
+        function init(){
+            $("h1").html("Changing html content with jQuery");
+            $("body").append("<h2>Add new content with JQuery</h2>");
+            var ul = $("<ul>");
+            for(var i = 0; i<10; i++){
+                var li = $("<li>");
+                li.append("line item" + i);
+                ul.append(li);
+            }
+            $("body").append(ul);
+        }
+    </script>
+</head>
+<body>
+<h1>Manipulating the DOM with JQuery</h1>
+</body>
+</html>
