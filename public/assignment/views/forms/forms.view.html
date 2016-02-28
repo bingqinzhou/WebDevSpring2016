@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Forms</h1>
+
+            <ul class="nav nav-tabs">
+                <li class="active" id="formstab"><a data-toggle="tab">Forms</a></li>
+                <li id="fieldstab"><a href="../fields/fields.view.html" data-toggle="tab">Fields</a></li>
+            </ul>
+
+            <div id="formscontent" class="tab-content">
+                <div class="tab-pane fade in active">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <i class="glyphicon glyphicon-sort"></i>
+                                    Form Name
+                                </th>
+                                <th>
+                                    <i class="glyphicon glyphicon-sort"></i>
+                                    Action
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" ng-model="formName" class="form-control" placeholder="formName"/>
+                                </td>
+                                <td>
+                                    <button ng-click="addForm()" class="btn btn-success">AddForm</button>
+                                    <button ng-click="updateForm()" class="btn btn-primary">UpdateForm</button>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="form in currentForms">
+                                <td>{{form.title}}</td>
+                                <td>
+                                    <button ng-click="deleteForm($index)"
+                                            class="btn btn-danger">
+                                        DeleteForm
+                                    </button>
+                                    <button ng-click="selectForm($index)"
+                                            class="btn btn-info">
+                                        SelectForm
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
