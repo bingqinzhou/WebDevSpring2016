@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3e784ecf-021d-453f-a560-b21b856942b0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/app.js" afterPath="$PROJECT_DIR$/public/assignment/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/views/admin/admin.controller.js" afterPath="$PROJECT_DIR$/public/assignment/views/admin/admin.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="WebDev.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -289,7 +286,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="794" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="Push.Settings">
@@ -443,7 +440,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457064325322</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="test committing again">
+      <created>1457064405884</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1457064405884</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -501,7 +504,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="try push" />
     <MESSAGE value="test committing" />
-    <option name="LAST_COMMIT_MESSAGE" value="test committing" />
+    <MESSAGE value="test committing again" />
+    <option name="LAST_COMMIT_MESSAGE" value="test committing again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
