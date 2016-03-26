@@ -9,7 +9,9 @@
     function MainController($scope,$location,$rootScope){
         $scope.$location = $location;
         $rootScope.currentUser = null;
-
+        $rootScope.currentForms = null;
+        $rootScope.currentForm = null;
+        $rootScope.currentFields = null;
     }
 
 })();

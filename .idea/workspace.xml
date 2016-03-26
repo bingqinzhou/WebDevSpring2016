@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3e784ecf-021d-453f-a560-b21b856942b0" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/services/field.service.client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/services/forms.service.client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/services/user.service.client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/views/forms/fields.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/views/forms/fields.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/views/forms/forms.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/client/views/users/login.controller.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/app.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/models/form.mock.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/models/form.model.server.js" />
@@ -11,31 +17,12 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/services/field.service.server.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/services/form.service.server.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/server/services/user.service.server.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/css/dashboard.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/index.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/services/forms.service.client.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/services/user.service.client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/admin/admin.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/admin/admin.view.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/fields/fields.controller.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/fields/fields.view.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/forms/forms.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/forms/forms.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/header/header.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/header/header.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/home/home.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/home/home.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/main/main.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/sidebar/sidebar.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/sidebar/sidebar.view.html" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/login.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/login.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/profile.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/profile.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/register.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/register.view.html" afterPath="" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/app.js" afterPath="$PROJECT_DIR$/public/assignment/client/app.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/config.js" afterPath="$PROJECT_DIR$/public/assignment/client/config.js" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/css/dashboard.css" afterPath="$PROJECT_DIR$/public/assignment/client/css/dashboard.css" />
@@ -94,7 +81,7 @@
       <file leaf-file-name="fields.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assignment/client/views/forms/fields.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73275864">
+            <state vertical-scroll-proportion="0.92057765">
               <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
@@ -583,10 +570,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.49331105" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50406504" sideWeight="0.5401338" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38662317" sideWeight="0.30602008" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38662317" sideWeight="0.30602008" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3219512" sideWeight="0.48662207" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.502447" sideWeight="0.45986623" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.502447" sideWeight="0.45986623" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.398374" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.49665552" order="3" side_tool="false" content_ui="tabs" />
@@ -631,12 +618,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="try push" />
     <MESSAGE value="test committing" />
     <MESSAGE value="test committing again" />
     <MESSAGE value="try commit problem" />
     <MESSAGE value="project concept" />
-    <option name="LAST_COMMIT_MESSAGE" value="project concept" />
+    <MESSAGE value="server side assigment" />
+    <option name="LAST_COMMIT_MESSAGE" value="server side assigment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1032,7 +1022,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/client/views/forms/fields.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73275864">
+        <state vertical-scroll-proportion="0.92057765">
           <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />

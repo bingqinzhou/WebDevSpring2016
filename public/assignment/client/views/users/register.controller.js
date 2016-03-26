@@ -8,28 +8,24 @@
         $scope.register = register;
 
         function register(){
-
             if($scope.password != $scope.verifiedPassword){
-
                 alert("Failed to varify your password! Please enter password again!");
                 $scope.password = "";
                 $scope.verifiedPassword = "";
-
             }else{
-
                 var newUser = {
                     username:$scope.username,
                     password:$scope.password,
                     email:$scope.email
                 }
 
-                $rootScope.currentUser = UserService.createUser(newUser);
-                $location.url('/profile');
-
+                UserService.createUser(newUser)
+                    .then(function (response) {
+                        $rootScope.currentUser = response.data;
+                        console.log(response);
+                        $location.url('/profile');
+                    });
             }
-
-
-
         }
     }
 

@@ -5,7 +5,7 @@
 
             <ul class="nav nav-tabs">
                 <li class="active" id="formstab"><a data-toggle="tab">Forms</a></li>
-                <li id="fieldstab"><a href="../fields/fields.view.html" data-toggle="tab">Fields</a></li>
+                <li id="fieldstab"><a href="#/fields" data-toggle="tab">Fields</a></li>
             </ul>
 
             <div id="formscontent" class="tab-content">
@@ -35,7 +35,12 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="form in currentForms">
-                                <td>{{form.title}}</td>
+                                <td>
+                                    <button ng-click="navToFields($index)"
+                                            class="btn-link">
+                                         {{form.title}}
+                                    </button>
+                                </td>
                                 <td>
                                     <button ng-click="deleteForm($index)"
                                             class="btn btn-danger">

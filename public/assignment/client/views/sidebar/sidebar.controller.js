@@ -8,5 +8,7 @@
 
     function SidebarController(){
 
+
+
     }
 })();
