@@ -12,7 +12,7 @@
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
         $scope.selectForm = selectForm;
-        $scope.navToFields = navToFields;
+      //  $scope.navToFields = navToFields;
 
         var currentUser = $rootScope.currentUser;
         var currentUserId = currentUser._id;
@@ -58,11 +58,14 @@
             emptyInput();
         }
 
+        /**
         function navToFields($index){
             $rootScope.currentForm = $rootScope.currentForms[$index];
             $rootScope.currentFields = $rootScope.currentForm.fields;
             $location.url('/fields');
         }
+        */
+
     }
 
 })();

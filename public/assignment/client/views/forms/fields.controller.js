@@ -6,7 +6,7 @@
         .module("FormBuilderApp")
         .controller("FieldController",FieldController);
 
-    function FieldController($scope,$rootScope,FieldService,$routeParams){
+    function FieldController($scope,$rootScope,FieldService,FormService,$routeParams){
 
         $scope.addField = addField;
         $scope.deleteField = deleteField;
@@ -14,7 +14,20 @@
         $scope.editField = editField;
         $scope.sort = sort;
 
-        var formId = $rootScope.currentForm._id;
+        //var formId = $rootScope.currentForm._id;
+
+        var formId = $routeParams.formId;
+
+        initialize(formId);
+
+        function initialize(formId){
+            FormService.findFormById(formId).then(navigateCurrentFormToFields);
+        }
+
+        function navigateCurrentFormToFields(response){
+            $rootScope.currentForm = response.data;
+            $rootScope.currentFields = $rootScope.currentForm.fields;
+        }
 
         function updateCurrentFields(response){
             $rootScope.currentFields = response.data;

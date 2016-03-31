@@ -36,10 +36,15 @@
                             <tbody>
                             <tr ng-repeat="form in currentForms">
                                 <td>
+                                    <!--
                                     <button ng-click="navToFields($index)"
                                             class="btn-link">
                                          {{form.title}}
                                     </button>
+                                    -->
+                                    <a href="#/form/{{form._id}}/fields">
+                                        {{form.title}}
+                                    </a>
                                 </td>
                                 <td>
                                     <button ng-click="deleteForm($index)"
