@@ -2,14 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        #bg {
+            background-image:url('./image/library.jpg');
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        #photo{
+            position: absolute;
+            top:80px;
+            left:250px;
+            color:black;
+        }
+        #item{
+            position: absolute;
+            top:100px;
+            left:500px;
+        }
+    </style>
     <title>HomePage</title>
 </head>
-<body background="./image/library.jpg" class="stretch">
-<div align="center">
-    <h1>Welcome To Bingqin Zhou's Home Page !</h1>
-    <img src="./image/wuzun2.jpg" height="200px" class="pull-left"/>
-    <h3><a href="assignment/client/index.html">Form Maker Application</a></h3>
-    <h3><a href="project/index.html">Music Recommendation Application</a></h3>
+<body id="bg">
+<div>
+    <h1 align="center">Welcome To Bingqin Zhou's Home Page !</h1>
+    <div id="photo">
+        <img src="./image/wuzun2.jpg" height="200px" class="pull-left"/>
+        <dl>
+            <li>NAME:Bingqin Zhou</li>
+            <li>NUID:001632275</li>
+            <li>TEL:4256239158</li>
+            <li>EMAIL:zhou.bing@husky.neu.edu</li>
+        </dl>
+    </div>
+    <div id="item" align="center">
+        <h3><a href="./image/Resume_Bingqin_Zhou.pdf">Resume</a></h3>
+        <h3><a href="assignment/client/index.html">Form Maker Application</a></h3>
+    </div>
+    <!--<h3 align="center"><a href="project/index.html">Music Recommendation Application</a></h3>-->
 </div>
 </body>
 </html>
