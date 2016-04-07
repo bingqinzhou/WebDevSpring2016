@@ -18,7 +18,6 @@
                     password:$scope.password,
                     email:$scope.email
                 }
-
                 UserService.createUser(newUser)
                     .then(function (response) {
                         $rootScope.currentUser = response.data;

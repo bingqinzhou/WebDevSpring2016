@@ -15,7 +15,6 @@
                 password: $scope.password
             }).then(function (response) {
                 $rootScope.currentUser = response.data;
-                console.log($rootScope.currentUser);
                 if(response){
                     $location.url('/profile');
                 }

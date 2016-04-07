@@ -29,7 +29,12 @@
             $rootScope.currentFields = $rootScope.currentForm.fields;
         }
 
-        function updateCurrentFields(response){
+        function updateCurrentFields(formId){
+            FieldService.getFieldsForForm(formId)
+                .then(setCurrentFields);
+        }
+
+        function setCurrentFields(response){
             $rootScope.currentFields = response.data;
             console.log($rootScope.currentFields);
         }
@@ -74,12 +79,14 @@
 
         function addField(option){
             var field = getNewField(option);
-            FieldService.createFieldForForm(formId,field).then(updateCurrentFields);
+            FieldService.createFieldForForm(formId,field);
+            updateCurrentFields(formId);
         }
 
         function deleteField($index){
             var field = $rootScope.currentFields[$index];
-            FieldService.deleteFieldFromForm(formId,field._id).then(updateCurrentFields);
+            FieldService.deleteFieldFromForm(formId,field._id);
+            updateCurrentFields(formId);
         }
 
         function popModal($index){
@@ -89,7 +96,8 @@
 
         function editField(field){
             console.log(field);
-            FieldService.updateField(formId,field._id,field).then(updateCurrentFields);
+            FieldService.updateField(formId,field._id,field);
+            updateCurrentFields(formId);
         }
 
         function sort(){

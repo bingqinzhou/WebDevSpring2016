@@ -21,6 +21,7 @@
         return services;
 
         function createFormForUser(userId,form){
+            console.log("hello from client");
             return $http.post("/api/assignment/user/"+userId+"/form",form);
         }
 
@@ -41,6 +42,4 @@
         }
 
     }
-
-
 })();

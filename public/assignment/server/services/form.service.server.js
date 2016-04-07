@@ -2,48 +2,80 @@
  * Created by bingqinzhou on 3/14/16.
  */
 
-module.exports = function(app,userModel,formModel){
+module.exports = function(app,formModel){
 
     app.get("/api/assignment/user/:userId/form", function(req,res)
     {
         var userId = req.params.userId;
-        var forms = formModel.findAllFormsForUser(userId);
-        res.json(forms);
+        formModel.findAllFormsForUser(userId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.get("/api/assignment/form/:formId", function(req,res)
     {
         var formId = req.params.formId;
-        var form = formModel.findFormById(formId);
-        res.json(form);
+        formModel.findFormById(formId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.delete("/api/assignment/form/:formId", function(req,res)
     {
         var formId = req.params.formId;
-        var form = formModel.deleteFormById(formId);
-        var userId = form.userId;
-        var forms = formModel.findAllFormsForUser(userId);
-        res.json(forms);
+        formModel.deleteFormById(formId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.post("/api/assignment/user/:userId/form", function(req,res)
     {
-        var newForm = req.body;
+        var form = req.body;
         var userId = req.params.userId;
-        formModel.createFormForUser(userId, newForm);
-        var forms = formModel.findAllFormsForUser(userId);
-        res.json(forms);
+        formModel.createFormForUser(userId, form)
+            .then(
+                function(doc){
+                    console.log(doc);
+                    res.json(form);
+                    console.log(form);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.put("/api/assignment/form/:formId", function(req,res)
     {
         var formId = req.params.formId;
         var form = req.body;
-        formModel.updateFormById(formId, form);
-        var userId = form.userId;
-        var forms = formModel.findAllFormsForUser(userId);
-        res.json(forms);
+        formModel.updateFormById(formId, form)
+            .then(
+                function(doc){
+                    res.json(form);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
     
 }

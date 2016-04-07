@@ -26,16 +26,20 @@
 
         function updateCurrentForms(response){
             $rootScope.currentForms = response.data;
-            console.log($rootScope.currentForms);
         }
 
         function emptyInput(){
             $scope.formName = "";
         }
 
+        function blank(response){
+            console.log(response.data);
+        }
+
         function addForm(){
-            var newForm = {"_id": "000", "title": $scope.formName, "userId": "000"};
-            FormService.createFormForUser(currentUserId,newForm).then(updateCurrentForms);
+            var newForm = {"title": $scope.formName, "userId": currentUserId};
+            FormService.createFormForUser(currentUserId,newForm);
+            initialize(currentUserId);
             emptyInput();
         }
 
@@ -43,7 +47,9 @@
             var newForm = {"_id": $rootScope.currentForm._id, "title": $scope.formName,
                 "userId": currentUserId};
 
-            FormService.updateFormById($rootScope.currentForm._id, newForm).then(updateCurrentForms);
+            FormService.updateFormById($rootScope.currentForm._id, newForm)
+                .then(blank);
+            initialize(currentUserId);
             emptyInput();
         }
 
@@ -54,7 +60,8 @@
 
         function deleteForm($index){
             var form  = $rootScope.currentForms[$index];
-            FormService.deleteFormById(form._id).then(updateCurrentForms);
+            FormService.deleteFormById(form._id);
+            initialize(currentUserId);
             emptyInput();
         }
 
