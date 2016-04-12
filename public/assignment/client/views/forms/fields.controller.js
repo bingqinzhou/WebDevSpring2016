@@ -13,8 +13,8 @@
         $scope.popModal = popModal;
         $scope.editField = editField;
         $scope.sort = sort;
-
-        //var formId = $rootScope.currentForm._id;
+        $scope.addOption = addOption;
+        $scope.deleteOption = deleteOption;
 
         var formId = $routeParams.formId;
 
@@ -36,7 +36,6 @@
 
         function setCurrentFields(response){
             $rootScope.currentFields = response.data;
-            console.log($rootScope.currentFields);
         }
 
         function getNewField(option){
@@ -92,6 +91,7 @@
         function popModal($index){
             $scope.field = $rootScope.currentFields[$index];
             $('#fieldModal').modal('show');
+            console.log(field);
         }
 
         function editField(field){
@@ -105,9 +105,41 @@
         }
 
         $(function() {
-            $( "#sortable" ).sortable();
-            $( "#sortable" ).disableSelection();
+            $( "#sortable" ).sortable({
+                start: function(e, ui) {
+                    $(this).attr('data-previndex', ui.item.index());
+                    ui.item.oldPosition = ui.item.index();
+                },
+                stop: function(event, ui) {
+                    var prevpost={"startIndex":ui.item.oldPosition,"endIndex":ui.item.index()};
+                    updateOrder(prevpost);
+                }
+            }).disableSelection();
         });
+
+        function updateOrder(prevpost){
+            //FieldService.updateFieldsOrder(formId,prevpost);
+            //updateCurrentFields(formId);
+        }
+
+        function addOption(field,option){
+            console.log(field.options);
+            field.options.push(option);
+        }
+
+        function deleteOption(field,option){
+            var index = findIndexOfOption(field,option);
+            field.options.splice(index,1);
+        }
+
+        function findIndexOfOption(field,option){
+            for(var o in field.options){
+                if(field.options[o] == option){
+                    return o;
+                }
+            }
+            return -1;
+        }
     }
 
 })();

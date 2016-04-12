@@ -21,42 +21,39 @@
                                  <textarea type="text" class="form-control" placeholder="{{field.placeholder}}"></textarea>
                              </div>
                          </td>
-                         <td ng-switch-when="OPTIONS">
-                             <label>{{field.label}}</label><br/>
-                             <select class="form-control">
-                                 <div class="input-group">
-                                     <option ng-repeat="option in field.options">{{option.label}}</option>
-                                 </div>
-                             </select>
-                         </td>
                          <td ng-switch-when="DATE">
                              <label>{{field.label}}</label><br/>
                              <input type="date"  class="form-control" placeholder="{{field.placeholder}}">
                          </td>
-                     <td ng-switch-when="CHECKBOXES">
-                         <label>{{field.label}}</label>
-                         <div class="input-group">
-                             <div class="checkbox">
-                                 <div ng-repeat="option in field.options">
-                                     <label>
-                                         <input type="checkbox" value="{{option.value}}">{{option.label}}
-                                     </label>
-                                     <br>
+                        <td ng-switch-when="OPTIONS">
+                              <label>{{field.label}}</label><br/>
+                              <select class="form-control">
+                                 <div class="input-group">
+                                    <option ng-repeat="option in field.options">{{option.label}}</option>
                                  </div>
-                             </div>
-                         </div>
-                     </td>
-                     <td ng-switch-when="RADIOS">
-                         <label>{{field.label}}</label>
-                         <div class="input-group">
-                             <div ng-repeat="option in field.options" class="radio">
-                                 <label>
-                                     <input type="radio" name="{{option.label}}" value="{{option.value}}" checked>
+                              </select>
+                        </td>
+                        <td ng-switch-when="CHECKBOXES">
+                              <label>{{field.label}}</label><br/>
+                              <div class="input-group">
+                                    <div class="checkbox">
+                                       <div ng-repeat="option in field.options">
+                                         <input type="checkbox" value="{{option.value}}">{{option.label}}
+                                         <br>
+                                       </div>
+                                    </div>
+                              </div>
+                        </td>
+                        <td ng-switch-when="RADIOS">
+                            <label>{{field.label}}</label><br/>
+                            <div class="input-group">
+                               <div ng-repeat="option in field.options" class="radio">
+                                     <input type="radio" name="name" value="{{option.value}}">
                                      {{option.label}}
-                                 </label>
-                             </div>
-                         </div>
-                     </td>
+                                     <br>
+                               </div>
+                            </div>
+                         </td>
                          <td ng-switch-default>
                              <label>{{field.label}}</label><br/>
                              <input type="text"  class="form-control" placeholder="{{field.placeholder}}">
@@ -160,8 +157,33 @@
                                placeholder="Edit Dropdown Label">
                         <br>
                         <label>Options</label>
-                            <textarea ng-model="field.options" class="form-control"
-                                      placeholder="Edit Dropdown Options" ng-list="&#10;" ng-trim="false"></textarea>
+                            <table class="table">
+                                <thead>
+                                      <tr>
+                                          <th>Option Label</th>
+                                          <th>Option Value</th>
+                                      </tr>
+                                      <tr>
+                                          <td><input ng-model = "option.label" class="form-control" placeholder="option label"/></td>
+                                          <td><input ng-model = "option.value" class="form-control" placeholder="option value"/></td>
+                                          <td>
+                                              <button ng-click="addOption(field,option)" class="btn btn-success">Add</button>
+                                          </td>
+                                      </tr>
+                                </thead>
+                                <tbody>
+                                      <tr ng-repeat="option in field.options">
+                                          <td><input ng-model="option.label" class="form-control"/></td>
+                                          <td><input ng-model="option.value" class="form-control"/></td>
+                                          <td>
+                                              <button ng-click="deleteOption(field,option)"
+                                                      class="btn btn-danger">
+                                                  Delete
+                                              </button>
+                                          </td>
+                                      </tr>
+                                </tbody>
+                            </table>
                     </form>
                 </div>
             </div>
@@ -174,11 +196,36 @@
                     <form>
                         <label>Label</label>
                         <input ng-model="field.label" class="form-control" type="text"
-                               placeholder="Edit Radio Label">
+                               placeholder="Edit Dropdown Label">
                         <br>
                         <label>Options</label>
-                            <textarea ng-model="field.options" class="form-control" placeholder="Edit Radio Options"
-                                      ng-list="&#10;" ng-trim="false"></textarea>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Option Label</th>
+                                <th>Option Value</th>
+                            </tr>
+                            <tr>
+                                <td><input ng-model = "option.label" class="form-control" placeholder="option label"/></td>
+                                <td><input ng-model = "option.value" class="form-control" placeholder="option value"/></td>
+                                <td>
+                                    <button ng-click="addOption(field,option)" class="btn btn-success">Add</button>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="option in field.options">
+                                <td><input ng-model="option.label" class="form-control"/></td>
+                                <td><input ng-model="option.value" class="form-control"/></td>
+                                <td>
+                                    <button ng-click="deleteOption(field,option)"
+                                            class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </form>
                 </div>
             </div>
@@ -191,11 +238,36 @@
                     <form>
                         <label>Label</label>
                         <input ng-model="field.label" class="form-control" type="text"
-                               placeholder="Edit Checkbox label">
+                               placeholder="Edit Dropdown Label">
                         <br>
                         <label>Options</label>
-                            <textarea ng-model="field.options" class="form-control"
-                                      placeholder="Edit Checkbox options" ng-list="&#10;" ng-trim="false"></textarea>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Option Label</th>
+                                <th>Option Value</th>
+                            </tr>
+                            <tr>
+                                <td><input ng-model = "option.label" class="form-control" placeholder="option label"/></td>
+                                <td><input ng-model = "option.value" class="form-control" placeholder="option value"/></td>
+                                <td>
+                                    <button ng-click="addOption(field,option)" class="btn btn-success">Add</button>
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="option in field.options">
+                                <td><input ng-model="option.label" class="form-control"/></td>
+                                <td><input ng-model="option.value" class="form-control"/></td>
+                                <td>
+                                    <button ng-click="deleteOption(field,option)"
+                                            class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </form>
                 </div>
             </div>

@@ -97,4 +97,24 @@ module.exports = function(app,fieldModel){
             );
     })
 
+    /**
+    app.put("/api/assignment/form/:formId",function(req,res){
+
+        var formId = req.params.formId;
+        var prevpost = req.body;
+        var startIndex = prevpost.startIndex;
+        var endIndex = prevpost.endIndex;
+
+        fieldModel.updateFieldsOrder(formId,startIndex,endIndex)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    })
+     */
+
 }
