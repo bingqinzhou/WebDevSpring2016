@@ -98,8 +98,8 @@ module.exports = function(app,fieldModel){
     })
 
     /**
-    app.put("/api/assignment/form/:formId",function(req,res){
-
+    app.put("/api/assignment/prevpost/:formId",function(req,res){
+        console.log("hello from updateOrder");
         var formId = req.params.formId;
         var prevpost = req.body;
         var startIndex = prevpost.startIndex;
@@ -116,5 +116,38 @@ module.exports = function(app,fieldModel){
             );
     })
      */
+
+    app.put("/api/assignment/prevpost/:formId",function(req,res){
+
+        var formId = req.params.formId;
+        var newFields = req.body;
+        fieldModel.updateFieldsOrder(formId,newFields)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    })
+
+    app.post("/api/assignment/prevpost/:formId",function(req,res){
+
+        var formId = req.params.formId;
+        var prevpost = req.body;
+        var startIndex = prevpost.startIndex;
+        var endIndex = prevpost.endIndex;
+
+        fieldModel.getNewFields(formId,startIndex,endIndex)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
+    })
 
 }

@@ -91,11 +91,9 @@
         function popModal($index){
             $scope.field = $rootScope.currentFields[$index];
             $('#fieldModal').modal('show');
-            console.log(field);
         }
 
         function editField(field){
-            console.log(field);
             FieldService.updateField(formId,field._id,field);
             updateCurrentFields(formId);
         }
@@ -112,18 +110,29 @@
                 },
                 stop: function(event, ui) {
                     var prevpost={"startIndex":ui.item.oldPosition,"endIndex":ui.item.index()};
-                    updateOrder(prevpost);
+                    //updateOrder(prevpost)
+                    getNewFields(prevpost);
                 }
             }).disableSelection();
         });
 
+
+        /**
         function updateOrder(prevpost){
-            //FieldService.updateFieldsOrder(formId,prevpost);
-            //updateCurrentFields(formId);
+            FieldService.updateFieldsOrder(formId,prevpost);
+            updateCurrentFields(formId);
+        }
+         */
+
+        function getNewFields(prevpost){
+            FieldService.getNewFields(formId,prevpost).then(updateOrder);
+        }
+
+        function updateOrder(response){
+            FieldService.updateFieldsOrder(formId,response.data);
         }
 
         function addOption(field,option){
-            console.log(field.options);
             field.options.push(option);
         }
 

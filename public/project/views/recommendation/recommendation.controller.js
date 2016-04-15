@@ -6,51 +6,39 @@
         .module("MovieApp")
         .controller("RecommendationController",RecommendationController);
 
-    function RecommendationController($scope,$rootScope,FormService){
+    function RecommendationController($scope,$rootScope,RecommendationService){
 
-        $scope.addForm = addForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
-        $scope.selectForm = selectForm;
+        $scope.updateTitle = updateTitle;
+        $scope.deleteRecommendation = deleteRecommendation;
+        $scope.selectRecommendation = selectRecommendation;
 
         var currentUser = $rootScope.currentUser;
         var currentUserId = currentUser._id;
 
-        $scope.currentForms = FormService.findAllFormsForUser(currentUserId);
-        $scope.currentForm = null;
+        $rootScope.currentRecommendations = RecommendationService.findAllRecommendationsForUser(currentUserId);
+        $rootScope.currentRecommendation = null;
 
-        function updateCurrentForms(){
-            $scope.currentForms = FormService.findAllFormsForUser(currentUserId);
+        function updateCurrentRecommendations(){
+            $rootScope.currentRecommendations = RecommendationService.findAllRecommendationsForUser(currentUserId);
         }
 
-        function addForm(){
-            var newForm = {"_id": "000", "title": $scope.formName, "userId": "000"};
-            FormService.createFormForUser(currentUserId,newForm);
-            $scope.formName = "";
-            updateCurrentForms();
+        function updateTitle(title){
+            $rootScope.currentRecommendation.title = title;
+            updateCurrentRecommendations();
+            $scope.title = "";
         }
 
-        function updateForm(){
-            var newForm = {"_id": $scope.currentForm._id, "title": $scope.formName,
-                "userId": currentUserId};
-
-            FormService.updateFormById($scope.currentForm._id, newForm);
-            updateCurrentForms();
-            $scope.formName = "";
+        function selectRecommendation($index){
+            $rootScope.currentRecommendation = $scope.currentRecommendations[$index];
+            $scope.title = $scope.currentRecommendation.title;
         }
 
-        function selectForm($index){
-            $scope.currentForm = $scope.currentForms[$index];
-            $scope.formName = $scope.currentForm.title;
+        function deleteRecommendation($index){
+            var recommendation  = $rootScope.currentRecommendations[$index];
+            RecommendationService.deleteRecommendationById(recommendation._id);
+            updateCurrentRecommendations();
+            $scope.title = "";
         }
-
-        function deleteForm($index){
-            var form  = $scope.currentForms[$index];
-            FormService.deleteFormById(form._id);
-            updateCurrentForms();
-            $scope.formName = "";
-        }
-
     }
 
 })();

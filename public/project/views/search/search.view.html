@@ -3,7 +3,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Search For A Movie !</h1>
 
-            <h2>Search By Title, Year or Actors...</h2>
+            <h2>Search By Movie By Title</h2>
             <input ng-model = "content" class="form-control" placeholder="Movie Title/Year/Actors"/>
             <button ng-click = "search(content)" class="btn btn-primary btn-block">Search</button>
 
@@ -13,17 +13,15 @@
                       <thead>
                             <tr>
                                 <th>Poster</th>
-                                <th>ImdbID</th>
                                 <th>Title</th>
-                                <th>Year</th>
+                                <th>Release</th>
                             </tr>
                       </thead>
                       <tbody>
-                            <tr ng-repeat="movie in data.Search">
-                                <td><img height="200px" ng-src="{{movie.Poster}}"/></td>
-                                <td>{{movie.imdbID}}</td>
-                                <td><a href="#/detail/{{movie.imdbID}}">{{movie.Title}}</a></td>
-                                <td>{{movie.Year}}</td>
+                            <tr ng-repeat="movie in data">
+                                <td><img height="200px" ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}"/></td>
+                                <td><a href="#/detail/{{movie.id}}">{{movie.original_title}}</a></td>
+                                <td>{{movie.release_date}}</td>
                             </tr>
                       </tbody>
                 </table>

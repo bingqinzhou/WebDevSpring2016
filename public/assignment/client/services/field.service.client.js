@@ -15,7 +15,8 @@
             getFieldForForm:getFieldForForm,
             deleteFieldFromForm:deleteFieldFromForm,
             updateField:updateField,
-            updateFieldsOrder:updateFieldsOrder
+            updateFieldsOrder:updateFieldsOrder,
+            getNewFields:getNewFields
 
         }
 
@@ -41,9 +42,18 @@
             return $http.put("/api/assignment/form/"+formId+"/field/"+fieldId,field);
         }
 
+        /**
+        function updateFieldsOrder(formId,prevpost){
+            return $http.put("/api/assignment/prevpost/"+formId,prevpost);
+        }
+         */
 
-        function updateFieldsOrder(formId,startIndex,endIndex){
-            //return $http.put("/api/assignment/form/"+formId,prevpost);
+        function getNewFields(formId,prevpost){
+            return $http.post("/api/assignment/prevpost/"+formId,prevpost);
+        }
+
+        function updateFieldsOrder(formId,newFields){
+            return $http.put("/api/assignment/prevpost/"+formId,newFields);
         }
 
     }

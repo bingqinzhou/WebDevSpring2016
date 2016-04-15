@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">{{currentRecommendation.title}}</h1>
+        <ul class="nav nav-tabs">
+            <li id="recommendationstab"><a href="#/recommendations" data-toggle="tab">Recommendations</a></li>
+            <li class="active" id="fieldstab"><a href="#/" data-toggle="tab">Fields</a></li>
+        </ul>
+        <form class="form-inline">
+            <table class="table table-striped">
+                <tbody ng-model="fields" id="sortable">
+                <tr ng-repeat="field in currentRecommendation.fields" ng-switch="field.type">
+                    <td ng-switch-when="TEXT">
+                        <label>{{field.label}}</label><br/>
+                        <div class="input-group">
+                            <input ng-model="field.value" type="text"class="form-control">
+                        </div>
+                    </td>
+                    <td ng-switch-when="TEXTAREA">
+                        <label>{{field.label}}</label><br/>
+                        <div class="input-group">
+                            <textarea ng-model="field.value" type="text" class="form-control"></textarea>
+                        </div>
+                    </td>
+                    <td>
+                        <i ng-click="deleteField($index)" class="glyphicon glyphicon-remove"></i>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td>
+                        <label>Photos:</label></br>
+                        <img ng-src = "http://image.tmdb.org/t/p/w500/{{currentMovie.poster_path}}" height="200px"/>
+                        <img ng-src = "http://image.tmdb.org/t/p/w500/{{currentMovie.backdrop_path}}" height="200px"/>
+                    </td>
+                    <td>
+                        <i ng-click="" class="glyphicon glyphicon-plus"></i>
+                    </td>
+                </tr>
+                -->
+                <tr>
+                    <td>
+                        <Label>Add New Content:</Label><br/>
+                        <div class="input-group">
+                            <select ng-model="option">
+                                <option>Actors</option>
+                                <option>Directors</option>
+                                <option>Regions</option>
+                                <option>Comments</option>
+                                <option>Video</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <i ng-click="addField(option)" class="glyphicon glyphicon-plus"></i>
+                        &nbsp
+                        &nbsp
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button ng-click="updateRecommendation(currentRecommendation._id,currentRecommendation)" class="btn btn-success">Save Change</button>
+                    </td>
+                    <td>
+                        <button ng-click="back()" class="btn btn-primary">Cancel</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

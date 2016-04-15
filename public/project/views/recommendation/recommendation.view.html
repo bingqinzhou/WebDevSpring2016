@@ -4,7 +4,7 @@
             <h1 class="page-header">My Recommendations</h1>
 
             <ul class="nav nav-tabs">
-                <li class="active" id="recommendationstab"><a data-toggle="tab">Recommend A Movie</a></li>
+                <li class="active" id="recommendationstab"><a data-toggle="tab">Recommendations</a></li>
                 <li id="searchestab"><a href="#/" data-toggle="tab">Fields</a></li>
             </ul>
 
@@ -16,7 +16,7 @@
                             <tr>
                                 <th>
                                     <i class="glyphicon glyphicon-sort"></i>
-                                    Recommendation Title
+                                    Title
                                 </th>
                                 <th>
                                     <i class="glyphicon glyphicon-sort"></i>
@@ -25,25 +25,26 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="text" ng-model="formName" class="form-control" placeholder="Title"/>
+                                    <input type="text" ng-model="title" class="form-control" placeholder="Title"/>
                                 </td>
                                 <td>
-                                    <button ng-click="addForm()" class="btn btn-success">AddRecommendation</button>
-                                    <button ng-click="updateForm()" class="btn btn-primary">UpdateRecommendation</button>
+                                    <button ng-click="updateTitle(title)" class="btn btn-success">UpdateTitle</button>
                                 </td>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="form in currentForms">
-                                <td>{{form.title}}</td>
+                            <tr ng-repeat="recommendation in currentRecommendations">
+                                <td><a href="#/recommendation/{{recommendation._id}}">{{recommendation.title}}</a></td>
                                 <td>
-                                    <button ng-click="deleteForm($index)"
-                                            class="btn btn-danger">
-                                        DeleteForm
+                                    <button ng-click="selectRecommendation($index)"
+                                            class="btn btn-primary">
+                                        Select
                                     </button>
-                                    <button ng-click="selectForm($index)"
-                                            class="btn btn-info">
-                                        SelectForm
+                                </td>
+                                <td>
+                                    <button ng-click="deleteRecommendation($index)"
+                                            class="btn btn-primary">
+                                        Delete
                                     </button>
                                 </td>
                             </tr>

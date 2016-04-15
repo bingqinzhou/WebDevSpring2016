@@ -9,7 +9,9 @@
     function MainController($scope,$location,$rootScope){
         $scope.$location = $location;
         $rootScope.currentUser = null;
-
+        $rootScope.currentMovie = null;
+        $rootScope.currentRecommendation = null;
+        $rootScope.currentRecommendations = null;
     }
 
 })();
