@@ -1,0 +1,78 @@
+
+<style>
+
+    #button1{
+        position:absolute;
+        top:400px;
+        left:20px;
+        width:400px;
+    }
+
+    .btn-primary {
+        background:lightskyblue;
+        border: 0 none;
+        font-color: white;
+        font-weight: 700;
+        font-size:25px;
+        height:80px;
+    }
+
+    #button2{
+        position:absolute;
+        top:400px;
+        left:450px;
+        width:400px;
+    }
+
+    .btn-success {
+        background:lightgreen;
+        border: 0 none;
+        font-color: white;
+        font-weight: 700;
+        font-size:25px;
+        height:80px;
+    }
+
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Profile</h1>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <table class="table table-striped">
+                        <tbody>
+                              <tr>
+                                  <td><label>Username: </label></td>
+                                  <td>{{user.username}}</td>
+                              </tr>
+                              <tr>
+                                  <td><label>First Name: </label></td>
+                                  <td>{{user.firstName}}</td>
+                              </tr>
+                              <tr>
+                                  <td><label>Last Name: </label></td>
+                                  <td>{{user.lastName}}</td>
+                              </tr>
+                              <tr>
+                                  <td><label>Email: </label></td>
+                                  <td>{{user.email}}</td>
+                              </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <div id="button1">
+                <button class="btn btn-primary btn-block">
+                    <a href="#/pool">Back To Recommendation Pool</a></button>
+            </div>
+            <div id="button2">
+                <button class="btn btn-success btn-block">
+                    <a href="#/recommendations/{{user._id}}">See {{user.username}}'s Recommendations</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+

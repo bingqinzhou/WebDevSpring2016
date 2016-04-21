@@ -6,14 +6,21 @@
         .module("FormBuilderApp")
         .controller("HeaderController",HeaderController);
 
-    function HeaderController($scope,$rootScope){
+    function HeaderController($scope,$rootScope,SecurityService){
 
         $scope.logout = logout;
 
+        /**
         function logout(){
             $rootScope.currentUser = null;
         }
+         */
 
+        function logout(){
+
+            $rootScope.currentUser = null;
+            SecurityService.logout();
+        }
 
     }
 })();

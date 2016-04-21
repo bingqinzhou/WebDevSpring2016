@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Search For A Movie !</h1>
+
+            <h3>Search By Movie By Title</h3>
+            <input ng-model = "content" class="form-control" placeholder="Movie Title/Year/Actors"/>
+            <button ng-click = "search(content)" class="btn btn-primary btn-block">Search</button>
+
+            <h2>Search Results</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                      <thead>
+                            <tr>
+                                <th>Poster</th>
+                                <th>Title</th>
+                                <th>Release</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                            <tr ng-repeat="movie in data">
+                                <td><img height="200px" ng-src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}"/></td>
+                                <td><a href="#/detail/{{movie.id}}">{{movie.original_title}}</a></td>
+                                <td>{{movie.release_date}}</td>
+                            </tr>
+                      </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

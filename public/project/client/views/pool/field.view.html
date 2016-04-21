@@ -1,0 +1,57 @@
+<style>
+
+    #button{
+        position:absolute;
+        top:480px;
+        left:175px;
+        width:550px;
+    }
+
+    .btn-primary {
+        background:lightskyblue;
+        border: 0 none;
+        font-color: white;
+        font-weight: 700;
+        font-size:18px;
+        height:40px;
+    }
+
+</style>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">{{recommendation.title}}</h1>
+        <form class="form-inline">
+            <table class="table table-striped">
+                <tbody ng-model="fields">
+                <tr ng-repeat="field in recommendation.fields" ng-switch="field.type">
+                    <td ng-switch-when="TEXT">
+                        <label>{{field.label}}</label><br/>
+                        <div>{{field.value}}</div>
+                    </td>
+                    <td ng-switch-when="TEXTAREA">
+                        <label>{{field.label}}</label><br/>
+                        <div>{{field.value}}</div>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td>
+                        <label>Photos:</label></br>
+                        <img ng-src = "http://image.tmdb.org/t/p/w500/{{currentMovie.poster_path}}" height="200px"/>
+                        <img ng-src = "http://image.tmdb.org/t/p/w500/{{currentMovie.backdrop_path}}" height="200px"/>
+                    </td>
+                    <td>
+                        <i ng-click="" class="glyphicon glyphicon-plus"></i>
+                    </td>
+                </tr>
+                -->
+                </tbody>
+            </table>
+        </form>
+        <div id="button">
+            <button class="btn btn-primary btn-block">
+                <a href="#/pool">Back To Recommendation Pool</a></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+/**
+ * Created by bingqinzhou on 3/3/16.
+ */
+(function(){
+    angular
+        .module("MovieApp")
+        .config(Configuration);
+
+    function Configuration($routeProvider){
+        $routeProvider
+            .when("/home",{
+                templateUrl:"views/home/home.view.html",
+                controller:"HomeController"
+            })
+            .when("/register",{
+                templateUrl:"views/users/register.view.html",
+                controller:"RegisterController"
+            })
+            .when("/login",{
+                templateUrl:"views/users/login.view.html",
+                controller:"LoginController"
+            })
+            .when("/profile",{
+                templateUrl:"views/users/profile.view.html",
+                controller:"ProfileController"
+            })
+            .when("/profile/:userId",{
+                templateUrl:"views/pool/profile.view.html",
+                controller:"ProfilePoolController"
+            })
+            .when("/admin",{
+                templateUrl:"views/admin/admin.view.html"
+            })
+            .when("/recommendations",{
+                templateUrl:"views/recommendation/recommendation.view.html",
+                controller:"RecommendationController"
+            })
+            .when("/recommendation/:recommendationId",{
+                templateUrl:"views/recommendation/field.view.html",
+                controller:"FieldFromRecommendationController"
+            })
+            .when("/pool/:recommendationId",{
+                templateUrl:"views/pool/field.view.html",
+                controller:"FieldPoolController"
+            })
+            .when("/recommendations/:userId",{
+                templateUrl:"views/pool/recommendations.view.html",
+                controller:"RecommendationPoolController"
+            })
+            .when("/field",{
+                templateUrl:"views/search/field.view.html",
+                controller:"FieldFromDetailController"
+            })
+            .when("/search",{
+                templateUrl:"views/search/search.view.html",
+                controller:"SearchController"
+            })
+            .when("/detail/:movieId",{
+                templateUrl:"views/search/detail.view.html",
+                controller:"DetailController"
+            })
+            .when("/pool",{
+                templateUrl:"views/pool/pool.view.html",
+                controller:"PoolController"
+            })
+            .otherwise({
+                redirectTo: "/home"
+            });
+        ;
+
+    }
+
+})();

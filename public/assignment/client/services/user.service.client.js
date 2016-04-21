@@ -12,20 +12,21 @@
             createUser: createUser,
             deleteUserById:deleteUserById,
             updateUser:updateUser,
+            findUserByUserName:findUserByUserName
 
         }
 
         return services;
 
-        function findUserByUserName(username,callback){
-            return $http.get("/api/assignment/user/",username);
-        }
-
         function findUserByCredentials(credential){
             return $http.get("/api/assignment/userCred/" + credential.username + "/" + credential.password);
         }
 
-        function findAllUsers(callback){
+        function findUserByUserName(username){
+            return $http.get("/api/assignment/user/",username);
+        }
+
+        function findAllUsers(){
             return $http.get("/api/assignment/user");
         }
 
@@ -33,7 +34,7 @@
             return $http.post("/api/assignment/user",user);
         }
 
-        function deleteUserById(userId,callback){
+        function deleteUserById(userId){
             return $http.delete("/api/assignment/user/"+userId);
         }
 

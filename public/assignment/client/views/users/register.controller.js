@@ -3,7 +3,7 @@
         .module("FormBuilderApp")
         .controller("RegisterController",RegisterController);
 
-    function RegisterController($scope,$rootScope,$location,UserService){
+    function RegisterController($scope,$rootScope,$location,SecurityService){
 
         $scope.register = register;
 
@@ -18,11 +18,16 @@
                     password:$scope.password,
                     email:$scope.email
                 }
-                UserService.createUser(newUser)
+                SecurityService.register(newUser)
                     .then(function (response) {
-                        $rootScope.currentUser = response.data;
-                        console.log(response);
-                        $location.url('/profile');
+                        if(response.data !== null){
+                            $rootScope.currentUser = response.data;
+                            $location.url('/profile');
+                        }else{
+                            console.log("here");
+                            $location.url('/register');
+                            alert("username has been occupied !")
+                        }
                     });
             }
         }

@@ -1,10 +1,13 @@
 /**
  * Created by bingqinzhou on 3/14/16.
  */
+var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function(app,userModel){
 
-    app.post("/api/assignment/user", function(req,res)
+    var admin = admin;
+
+    app.post("/api/assignment/user",function(req,res)
     {
         var user = req.body;
         userModel.createUser(user)
@@ -18,10 +21,13 @@ module.exports = function(app,userModel){
             );
     })
 
-    app.put("/api/assignment/user/:id", function(req,res)
+    app.put("/api/assignment/user/:id",function(req,res)
     {
         var userId = req.params["id"];
         var user = req.body;
+
+        //user.password = bcrypt.hashSync(user.password);
+
         userModel.updateUser(userId,user)
             .then(
                 function(doc){
@@ -33,7 +39,7 @@ module.exports = function(app,userModel){
             );
     })
 
-    app.delete("/api/assignment/user/:id", function(req,res)
+    app.delete("/api/assignment/user/:id",function(req,res)
     {
         var userId = req.params["id"];
         userModel.deleteUserById(userId)
@@ -47,7 +53,7 @@ module.exports = function(app,userModel){
             );
     })
 
-    app.get("/api/assignment/user", function(req,res)
+    app.get("/api/assignment/user",function(req,res)
     {
         userModel.findAllUsers()
             .then(
@@ -105,5 +111,12 @@ module.exports = function(app,userModel){
                 }
             );
     })
+
+    function admin(req, res, next) {
+        if(req.user.roles.indexOf("admin") === -1) {
+            res.send(403);
+        }
+        next();
+    }
 
 }

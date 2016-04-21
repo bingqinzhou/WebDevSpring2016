@@ -42,7 +42,7 @@ module.exports = function(db,mongoose,UserCollection){
         UserCollection.update({_id:userId},
             {$set:{username:user.username,password:user.password,
                              firstName:user.firstName, lastName:user.lastName,
-                             email:user.email,phone:user.phone}},
+                             email:user.email,phone:user.phone,roles:user.roles}},
         function (err, doc) {
             if (err) {
                 deferred.reject(err);
@@ -55,7 +55,7 @@ module.exports = function(db,mongoose,UserCollection){
 
     function deleteUserById(userId){
         var deferred = q.defer();
-        UserCollection.remove({id:userId}, function (err, doc) {
+        UserCollection.remove({_id:mongoose.Types.ObjectId(userId)}, function (err, doc) {
             if (err) {
                 deferred.reject(err);
             } else {
@@ -91,7 +91,7 @@ module.exports = function(db,mongoose,UserCollection){
 
     function findUserByUsername(username){
         var deferred = q.defer();
-        UserCollection.find({username:username}, function (err, doc) {
+        UserCollection.findOne({username:username}, function (err, doc) {
             if (err) {
                 deferred.reject(err);
             } else {

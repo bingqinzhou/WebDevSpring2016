@@ -8,6 +8,10 @@ var multer = require('multer');
 
 var mongoose = require('mongoose');
 
+var passport = require('passport');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
 var connectionString = 'mongodb://localhost/FormBuilderDB';
 
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
@@ -25,6 +29,15 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());
+
+app.use(session({
+    secret: 'this is the secret',
+    resave:true,
+    saveUninitialized:true
+}));
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 require("./public/assignment/server/app.js")(app,db,mongoose);
 
