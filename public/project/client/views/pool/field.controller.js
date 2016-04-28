@@ -9,7 +9,12 @@
     function FieldPoolController($scope,$routeParams,RecommendationService){
 
         var recommendationId = $routeParams.recommendationId;
-        $scope.recommendation = RecommendationService.findRecommendationById(recommendationId);
+        RecommendationService.findRecommendationById(recommendationId)
+            .then(function(response){
+                if(response.data){
+                    $scope.recommendation = response.data;
+                }
+            });
 
     }
 

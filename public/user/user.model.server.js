@@ -6,9 +6,6 @@ var q = require("q");
 
 module.exports = function(db,mongoose,UserCollection){
 
-    //var UserSchema = require("./user.schema.server.js")(mongoose);
-    //var UserModel = mongoose.model("UserModel",UserSchema);
-
     var api = {
 
         createUser:createUser,

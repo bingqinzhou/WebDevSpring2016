@@ -7,7 +7,15 @@
         .controller("PoolController",PoolController);
 
     function PoolController($scope,RecommendationService){
-        $scope.recommendations = RecommendationService.findAllRecommendations();
+
+        RecommendationService.findAllRecommendations()
+            .then(function(response){
+                if(response.data){
+                    $scope.recommendations = response.data;
+                }else{
+                    console.log("no response");
+                }
+            });
     }
 
 })();

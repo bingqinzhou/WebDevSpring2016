@@ -10,9 +10,30 @@
 
         var userId = $routeParams.userId;
 
-        $scope.recommendations = RecommendationService.findAllRecommendationsForUser(userId);
-        $scope.user = UserService.findUserById(userId);
+        function initializeRecommendations(userId){
+            RecommendationService.findAllRecommendationsForUser(userId)
+                .then(updateRecommendations);
+        }
 
+        function initializeUser(userId){
+            UserService.findUserById(userId)
+                .then(updateUser);
+        }
+
+        function updateRecommendations(response){
+            if(response.data){
+                $scope.recommendations = response.data;
+            }
+            console.log("response data is null");
+        }
+
+        function updateUser(response){
+            $scope.user = response.data;
+            console.log("response data is null");
+        }
+
+        initializeRecommendations(userId);
+        initializeUser(userId);
     }
 
 })();

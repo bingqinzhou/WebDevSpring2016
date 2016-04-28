@@ -10,17 +10,18 @@
     function ProfileController($scope,$rootScope,$location,UserService){
 
         var currentUser = $rootScope.currentUser;
+        console.log(currentUser);
 
         if(currentUser){
 
             $scope.username = currentUser.username;
             $scope.password = currentUser.password;
+            console.log($scope.password);
             $scope.firstName = currentUser.firstName;
             $scope.lastName = currentUser.lastName;
             $scope.email = currentUser.email;
 
         }else{
-
             $location.url("/home");
         }
 
@@ -40,16 +41,17 @@
 
             }
 
-            $rootScope.currentUser = UserService.updateUser(currentUser._id,updatedUser);
+            UserService.updateUser(currentUser._id,updatedUser)
+                .then(
+                    function(response){
+                        $rootScope.currentUser = response.data;
+                    }
+                );
 
             if(updatedUser){
-
                 alert("Update the User Successfully!");
-
             }else{
-
                 alert("Unable to Update the User!");
-
             }
         }
     }

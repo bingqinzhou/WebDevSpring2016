@@ -7,43 +7,86 @@ module.exports = function(app,recommendationModel){
     app.get("/api/project/user/:userId/recommendation", function(req,res)
     {
         var userId = req.params.userId;
-        var recommendations = recommendationModel.findAllRecommendationsForUser(userId);
-        res.json(recommendations);
+        recommendationModel.findAllRecommendationsForUser(userId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.get("/api/project/recommendation/:recommendationId", function(req,res)
     {
         var recommendationId = req.params.recommendationId;
-        var recommendation = recommendationModel.findRecommendationById(recommendationId);
-        res.json(recommendation);
+        recommendationModel.findRecommendationById(recommendationId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
-    app.get("api/project/recommendation", function(req,res){
-        var recommendations = recommendationModel.findAllRecommendations();
-        res.json(recommendations);
+    app.get("/api/project/recommendation", function(req,res){
+        recommendationModel.findAllRecommendations()
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.delete("/api/project/recommendation/:recommendationId", function(req,res)
     {
         var recommendationId = req.params.recommendationId;
-        recommendationModel.deleteRecommendationById(recommendationId);
-        res.json(recommendationId);
+        recommendationModel.deleteRecommendationById(recommendationId)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.post("/api/project/recommendation", function(req,res)
     {
         var recommendation = req.body;
-        recommendationModel.createRecommendation(recommendation);
-        res.json(recommendation);
+        recommendationModel.createRecommendation(recommendation)
+            .then(
+                function(doc){
+                    console.log(doc);
+                    res.json(recommendation);
+                    console.log(recommendation);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
     app.put("/api/project/recommendation/:recommendationId", function(req,res)
     {
         var recommendationId = req.params.recommendationId;
         var recommendation = req.body;
-        recommendationModel.updateRecommendationById(recommendationId, recommendation);
-        res.json(recommendation);
-
+        recommendationModel.updateRecommendationById(recommendationId, recommendation)
+            .then(
+                function(doc){
+                    res.json(doc);
+                },
+                function(err){
+                    res.status(400).send(err);
+                }
+            );
     })
 
 }

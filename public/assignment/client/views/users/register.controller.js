@@ -16,7 +16,8 @@
                 var newUser = {
                     username:$scope.username,
                     password:$scope.password,
-                    email:$scope.email
+                    email:$scope.email,
+                    roles:["user"]
                 }
                 SecurityService.register(newUser)
                     .then(function (response) {

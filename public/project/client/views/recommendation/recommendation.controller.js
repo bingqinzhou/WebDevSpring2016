@@ -15,20 +15,34 @@
         var currentUser = $rootScope.currentUser;
         var currentUserId = currentUser._id;
 
-        $rootScope.currentRecommendations = RecommendationService.findAllRecommendationsForUser(currentUserId);
         $rootScope.currentRecommendation = null;
+        $rootScope.currentRecommendations = initialize(currentUserId);
 
-        function updateCurrentRecommendations(){
-            $rootScope.currentRecommendations = RecommendationService.findAllRecommendationsForUser(currentUserId);
+        function initialize(userId){
+            RecommendationService.findAllRecommendationsForUser(userId)
+                .then(updateCurrentRecommendations);
+        }
+
+        function updateCurrentRecommendations(response){
+            $rootScope.currentRecommendations = response.data;
+        }
+
+        function blank(response){
+            console.log(response.data);
+        }
+
+        function emptyInput(){
+            $scope.title = "";
         }
 
         function updateTitle(title){
             $rootScope.currentRecommendation.title = title;
             var recommendationId = $rootScope.currentRecommendation._id;
             var newRecommendation = $rootScope.currentRecommendation;
+            console.log(newRecommendation);
             RecommendationService.updateRecommendationById(recommendationId,newRecommendation);
-            updateCurrentRecommendations();
-            $scope.title = "";
+            initialize(currentUserId);
+            emptyInput();
         }
 
         function selectRecommendation($index){
@@ -39,8 +53,8 @@
         function deleteRecommendation($index){
             var recommendation  = $rootScope.currentRecommendations[$index];
             RecommendationService.deleteRecommendationById(recommendation._id);
-            updateCurrentRecommendations();
-            $scope.title = "";
+            initialize(currentUserId);
+            emptyInput();
         }
     }
 

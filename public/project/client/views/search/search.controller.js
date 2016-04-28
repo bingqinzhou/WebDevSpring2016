@@ -14,7 +14,6 @@
             MovieService.search(
                 content,
                 function(response){
-                    console.log(response);
                     $scope.data = response.results;
             });
         }

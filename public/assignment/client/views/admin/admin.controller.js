@@ -87,7 +87,7 @@
         }
 
         function getRoles(){
-            var string = $scope.roles;
+            var string = $scope.roles+'';
             var roles = string.split(",");
             return roles;
         }
@@ -97,7 +97,9 @@
             var userId = $scope.currentUser._id;
             var roles = getRoles();
             var newUser = {"_id":userId,"username":$scope.username,"password":$scope.password,
-                           "firstName":$scope.firstName,"lastName":$scope.lastName,"roles":roles};
+                           "firstName":$scope.firstName,"lastName":$scope.lastName,
+                           "email":$scope.currentUser.email, "phone":$scope.currentUser.phone,
+                            "roles":roles};
             console.log(newUser);
             UserService.updateUser(userId,newUser);
             refresh();

@@ -12,6 +12,7 @@
         $rootScope.currentMovie = null;
         $rootScope.currentRecommendation = null;
         $rootScope.currentRecommendations = null;
+        $rootScope.currentFields = null;
     }
 
 })();

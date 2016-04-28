@@ -22,18 +22,31 @@
             })
             .when("/profile",{
                 templateUrl:"views/users/profile.view.html",
-                controller:"ProfileController"
+                controller:"ProfileController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/profile/:userId",{
                 templateUrl:"views/pool/profile.view.html",
-                controller:"ProfilePoolController"
+                controller:"ProfilePoolController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/admin",{
-                templateUrl:"views/admin/admin.view.html"
+                templateUrl:"views/admin/admin.view.html",
+                controller:"AdminController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/recommendations",{
                 templateUrl:"views/recommendation/recommendation.view.html",
-                controller:"RecommendationController"
+                controller:"RecommendationController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/recommendation/:recommendationId",{
                 templateUrl:"views/recommendation/field.view.html",
@@ -41,7 +54,10 @@
             })
             .when("/pool/:recommendationId",{
                 templateUrl:"views/pool/field.view.html",
-                controller:"FieldPoolController"
+                controller:"FieldPoolController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/recommendations/:userId",{
                 templateUrl:"views/pool/recommendations.view.html",
@@ -49,24 +65,55 @@
             })
             .when("/field",{
                 templateUrl:"views/search/field.view.html",
-                controller:"FieldFromDetailController"
+                controller:"FieldFromDetailController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/search",{
                 templateUrl:"views/search/search.view.html",
-                controller:"SearchController"
+                controller:"SearchController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/detail/:movieId",{
                 templateUrl:"views/search/detail.view.html",
-                controller:"DetailController"
+                controller:"DetailController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .when("/pool",{
                 templateUrl:"views/pool/pool.view.html",
-                controller:"PoolController"
+                controller:"PoolController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
             })
             .otherwise({
                 redirectTo: "/home"
             });
-        ;
+
+
+        function checkLoggedIn($rootScope, $http, $q, $location) {
+
+            var deferred = $q.defer();
+
+            $http.get("/api/loggedin").success(function(user)
+            {
+                if (user !== '0') {
+                    console.log(user);
+                    $rootScope.currentUser = user;
+                    deferred.resolve();
+                }
+                else {
+                    deferred.reject();
+                    $location.url("/home")
+                }
+            });
+            return deferred.promise;
+        }
 
     }
 

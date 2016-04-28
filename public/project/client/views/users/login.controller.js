@@ -5,20 +5,20 @@
         .module("MovieApp")
         .controller("LoginController",LoginController);
 
-    function LoginController($scope, $rootScope,$location,UserService){
+    function LoginController($scope, $rootScope,$location,UserService,SecurityService){
 
         $scope.login = login;
 
         function login(){
-
-            $rootScope.currentUser = UserService.findUserByCredentials($scope.username,$scope.password);
-
-            if($rootScope.currentUser){
-
-                $location.url('/pool');
-
-            }
-
+            SecurityService.login($scope.username, $scope.password)
+                .then(function (response) {
+                    if(response.data){
+                        $rootScope.currentUser = response.data;
+                        $location.url('/profile');
+                    }else{
+                        console.log("fail to log in");
+                    }
+                });
         }
     }
 

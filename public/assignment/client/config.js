@@ -62,7 +62,7 @@
 
             var deferred = $q.defer();
 
-            $http.get("/api/assignment/loggedin").success(function(user)
+            $http.get("/api/loggedin").success(function(user)
             {
                 if (user !== '0') {
                     console.log(user);

@@ -6,16 +6,32 @@
         .module("MovieApp")
         .controller("FieldFromRecommendationController",FieldFromRecommendationController);
 
-    function FieldFromRecommendationController($scope,$rootScope,$routeParams,$location,RecommendationService){
+    function FieldFromRecommendationController($scope,$rootScope,$routeParams,$location,RecommendationService,FieldService){
 
         $scope.addField = addField;
         $scope.deleteField = deleteField;
+        $scope.updateField = updateField;
         $scope.updateRecommendation = updateRecommendation;
         $scope.back = back;
 
         var currentRecommendId = $routeParams.recommendationId;
-        $rootScope.currentRecommendation = RecommendationService.findRecommendationById(currentRecommendId);
-        console.log($rootScope.currentRecommendation);
+
+        RecommendationService.findRecommendationById(currentRecommendId)
+            .then(function(response){
+                if(response.data){
+                    $rootScope.currentRecommendation = response.data;
+                    $rootScope.currentFields = $rootScope.currentRecommendation.fields;
+                }
+            });
+
+        function updateCurrentFields(recommendationId){
+            FieldService.findAllFieldsForRecommendation(recommendationId)
+                .then(function(response){
+                    if(response.data){
+                        $rootScope.currentFields = response.data;
+                    }
+                });
+        }
 
         function getNewField(option){
             var newField = null;
@@ -39,11 +55,22 @@
 
         function addField(option){
             var field = getNewField(option);
-            $rootScope.currentRecommendation.fields.push(field);
+            FieldService.createFieldForRecommendation($rootScope.currentRecommendation._id,field);
+            updateCurrentFields($rootScope.currentRecommendation._id);
+
         }
 
         function deleteField($index){
-            $rootScope.currentRecommendation.fields.splice($index,1);
+            var field = $rootScope.currentFields[$index];
+            FieldService.deleteFieldByLabel($rootScope.currentRecommendation._id,field.label);
+            updateCurrentFields($rootScope.currentRecommendation._id);
+        }
+
+        function updateField($index){
+            var field = $rootScope.currentFields[$index];
+            console.log(field);
+            FieldService.updateFieldForRecommendation($rootScope.currentRecommendation._id,field.label,field);
+            alert("Update Content Successfully !");
         }
 
         function updateRecommendation(recommendationId,recommendation){

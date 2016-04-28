@@ -1,9 +1,10 @@
 /**
- * Created by bingqinzhou on 4/20/16.
+ * Created by bingqinzhou on 4/27/16.
  */
+
 (function(){
     angular
-        .module("FormBuilderApp")
+        .module("MovieApp")
         .factory("SecurityService",SecurityService);
 
     function SecurityService($http){

@@ -9,7 +9,12 @@
 
     function ProfilePoolController($scope,$routeParams,UserService){
         var userId = $routeParams.userId;
-        $scope.user = UserService.findUserById(userId);
+        UserService.findUserById(userId)
+            .then(function(response){
+                if(response.data){
+                    $scope.user = response.data;
+                }
+            });
     }
 
 })();

@@ -4,16 +4,15 @@
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt-nodejs');
 
-module.exports = function(app,userModel) {
+module.exports = function(app,userModel,bcrypt) {
 
     var auth = authorized;
 
-    app.post('/api/assignment/login', passport.authenticate('local'), login);
-    app.post('/api/assignment/logout', logout);
-    app.get('/api/assignment/loggedin', loggedin);
-    app.post('/api/assignment/register', register);
+    app.post('/api/login', passport.authenticate('local'), login);
+    app.post('/api/logout', logout);
+    app.get('/api/loggedin', loggedin);
+    app.post('/api/register', register);
 
     passport.use('local', new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
@@ -29,6 +28,7 @@ module.exports = function(app,userModel) {
                         return done(null, false, {message: 'Username does not exist !'});
                     }
                     else if (!bcrypt.compareSync(password, user.password)) {
+                        console.log('2');
                         return done(null, false, {message: 'Incorrect Password !'});
                     }
                     else {
@@ -59,14 +59,6 @@ module.exports = function(app,userModel) {
                 }
             )
     }
-
-    function authorized(req, res, next) {
-        if (!req.isAuthenticated()) {
-            res.send(401);
-        } else {
-            next();
-        }
-    };
 
     function loggedin(req, res) {
         res.send(req.isAuthenticated() ? req.user : '0');
