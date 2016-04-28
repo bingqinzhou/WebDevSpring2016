@@ -11,14 +11,12 @@
                             <tr>
                                 <th>Recommendation</th>
                                 <th>User</th>
-                                <th>Created_Time</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="recommendation in recommendations">
                                 <td><a href="#/pool/{{recommendation._id}}">{{recommendation.title}}</a></td>
                                 <td><a href="#/profile/{{recommendation.userId}}">{{recommendation.username}}</a></td>
-                                <td>{{recommendation.created}}</td>
                             </tr>
                             </tbody>
                         </table>

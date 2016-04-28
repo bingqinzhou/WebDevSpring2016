@@ -14,7 +14,7 @@
                 .then(function (response) {
                     if(response.data){
                         $rootScope.currentUser = response.data;
-                        $location.url('/profile');
+                        $location.url('/pool');
                     }else{
                         console.log("fail to log in");
                     }
