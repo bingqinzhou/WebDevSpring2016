@@ -49,7 +49,5 @@
         function findRecommendationById(recommendationId){
             return $http.get("/api/project/recommendation/" + recommendationId);
         }
-
-
     }
 })();

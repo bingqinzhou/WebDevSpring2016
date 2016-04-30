@@ -10,12 +10,34 @@
                             <thead>
                             <tr>
                                 <th>Recommendation</th>
+                                <th>Rating</th>
                                 <th>User</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="recommendation in recommendations">
+                            <tr ng-repeat="recommendation in recommendations" ng-switch="{{recommendation.rating}}">
                                 <td><a href="#/pool/{{recommendation._id}}">{{recommendation.title}}</a></td>
+                                <td ng-switch-when="6">
+                                    &#9733&#9733&#9733&#9733&#9733&#9733
+                                </td>
+                                <td ng-switch-when="5">
+                                    &#9733&#9733&#9733&#9733&#9733&#9734
+                                </td>
+                                <td ng-switch-when="4">
+                                    &#9733&#9733&#9733&#9733&#9734&#9734
+                                </td>
+                                <td ng-switch-when="3">
+                                    &#9733&#9733&#9733&#9734&#9734&#9734
+                                </td>
+                                <td ng-switch-when="2">
+                                    &#9733&#9733&#9734&#9734&#9734&#9734
+                                </td>
+                                <td ng-switch-when="1">
+                                    &#9733&#9734&#9734&#9734&#9734&#9734
+                                </td>
+                                <td ng-switch-default>
+                                    &#9734&#9734&#9734&#9734&#9734&#9734
+                                </td>
                                 <td><a href="#/profile/{{recommendation.userId}}">{{recommendation.username}}</a></td>
                             </tr>
                             </tbody>

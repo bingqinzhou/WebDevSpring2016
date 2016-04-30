@@ -36,7 +36,7 @@ module.exports = function(db,mongoose,RecommendationCollection){
         var deferred = q.defer();
         RecommendationCollection.update(
             {_id:mongoose.Types.ObjectId(recommendationId)},
-            {$set:{title:recommendation.title,fields:recommendation.fields}},
+            {$set:{title:recommendation.title,fields:recommendation.fields,rating:recommendation.rating}},
             function(err,doc){
                 if (err) {
                     console.log(err);

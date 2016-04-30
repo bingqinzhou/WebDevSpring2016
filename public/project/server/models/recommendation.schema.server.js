@@ -12,6 +12,7 @@ module.exports = function(mongoose) {
             userId: objectId,
             username:String,
             movieId:Number,
+            rating:Number,
             fields: [FieldSchema],
             created: {type: Date, default: Date.now},
             upated: {type: Date, default: Date.now}

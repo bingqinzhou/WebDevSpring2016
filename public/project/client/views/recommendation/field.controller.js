@@ -13,6 +13,7 @@
         $scope.updateField = updateField;
         $scope.updateRecommendation = updateRecommendation;
         $scope.back = back;
+        $scope.setRating = setRating;
 
         var currentRecommendId = $routeParams.recommendationId;
 
@@ -21,6 +22,7 @@
                 if(response.data){
                     $rootScope.currentRecommendation = response.data;
                     $rootScope.currentFields = $rootScope.currentRecommendation.fields;
+                    $scope.rating = $rootScope.currentRecommendation.rating;
                 }
             });
 
@@ -82,6 +84,11 @@
         function back(){
             $location.url('/recommendations');
             $rootScope.currentRecommendation = null;
+        }
+
+        function setRating(){
+            $rootScope.currentRecommendation.rating = $scope.rating;
+            RecommendationService.updateRecommendationById(currentRecommendId,$rootScope.currentRecommendation);
         }
 
     }
