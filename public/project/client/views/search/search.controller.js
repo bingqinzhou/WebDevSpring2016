@@ -14,7 +14,12 @@
             MovieService.search(
                 content,
                 function(response){
-                    $scope.data = response.results;
+                    console.log(response.results);
+                    if(response.results.length == 0){
+                        alert("No Search Results Found !");
+                    }else{
+                        $scope.data = response.results;
+                    }
             });
         }
 

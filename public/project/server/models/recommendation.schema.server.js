@@ -14,8 +14,8 @@ module.exports = function(mongoose) {
             movieId:Number,
             rating:Number,
             fields: [FieldSchema],
-            created: {type: Date, default: Date.now},
-            upated: {type: Date, default: Date.now}
+            created: {type: Date, default: Date.now()},
+            upated: {type: Date, default: Date.now()}
         }, {collection: "recommendation"}
     );
 
