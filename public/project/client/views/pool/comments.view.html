@@ -1,0 +1,56 @@
+<style>
+    #textarea{
+        width:400px;
+        height:100px;
+    }
+
+    .btn-primary {
+        background:lightskyblue;
+        border: 0 none;
+        font-color: white;
+        font-weight: 700;
+        font-size:18px;
+        height:40px;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">{{recommendation.title}}</h1>
+        <form class="form-inline">
+            <table class="table table-striped">
+                <thead>
+                      <tr>
+                          <th>Comment</th>
+                          <th>User</th>
+                          <th>Created Time</th>
+                      </tr>
+                </thead>
+                <tbody>
+                     <tr ng-repeat="comment in recommendation.comments">
+                         <td><p>{{comment.content}}</p></td>
+                         <td>{{comment.username}}</td>
+                         <td>{{comment.created}}</td>
+                     </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                       <td><textarea id="textarea" ng-model="content" class="form-control" placeholder="Comment this recommendation ..."></textarea></td>
+                       <td><button class="btn btn-success btn-block" ng-click="addComment(content)">Add Comment</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-block"><a href="#/pool/{{recommendation._id}}">Back To Recommendation</a></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

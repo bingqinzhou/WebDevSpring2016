@@ -37,7 +37,7 @@ module.exports = function(db,mongoose,RecommendationCollection){
         RecommendationCollection.update(
             {_id:mongoose.Types.ObjectId(recommendationId)},
             {$set:{title:recommendation.title,fields:recommendation.fields,
-                rating:recommendation.rating,upated:Date.now()}},
+                rating:recommendation.rating,upated:Date.now()},comments:recommendation.comments},
             function(err,doc){
                 if (err) {
                     console.log(err);

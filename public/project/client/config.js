@@ -59,6 +59,13 @@
                     checkLoggedIn : checkLoggedIn
                 }
             })
+            .when("/comments/:recommendationId",{
+                templateUrl:"views/pool/comments.view.html",
+                controller:"CommentController",
+                resolve: {
+                    checkLoggedIn : checkLoggedIn
+                }
+            })
             .when("/recommendations/:userId",{
                 templateUrl:"views/pool/recommendations.view.html",
                 controller:"RecommendationPoolController"

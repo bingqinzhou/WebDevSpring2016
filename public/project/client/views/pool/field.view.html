@@ -9,6 +9,15 @@
         height:40px;
     }
 
+    .btn-success {
+        background:lightgreen;
+        border: 0 none;
+        font-color: white;
+        font-weight: 700;
+        font-size:18px;
+        height:40px;
+    }
+
 </style>
 
 <div class="container-fluid">
@@ -16,7 +25,39 @@
         <h1 class="page-header">{{recommendation.title}}</h1>
         <form class="form-inline">
             <table class="table table-striped">
-                <tbody ng-model="fields">
+                <tbody>
+                <!--
+                <tr ng-switch="{{recommendation.rating}}" class="ng-scope">
+                    <td ng-switch-when='6'>
+                        <label>Rating:</label><br/>
+                        &#9733&#9733&#9733&#9733&#9733&#9733
+                    </td>
+                    <td ng-switch-when='5'>
+                        <label>Rating:</label><br/>
+                        &#9733&#9733&#9733&#9733&#9733&#9734
+                    </td>
+                    <td ng-switch-when='4'>
+                        <label>Rating:</label><br/>
+                        &#9733&#9733&#9733&#9733&#9734&#9734
+                    </td>
+                    <td ng-switch-when='3'>
+                        <label>Rating:</label><br/>
+                        &#9733&#9733&#9733&#9734&#9734&#9734
+                    </td>
+                    <td ng-switch-when="2">
+                        <label>Rating:</label><br/>
+                        &#9733&#9733&#9734&#9734&#9734&#9734
+                    </td>
+                    <td ng-switch-when='1'>
+                        <label>Rating:</label><br/>
+                        &#9733&#9734&#9734&#9734&#9734&#9734
+                    </td>
+                    <td ng-switch-default>
+                        <label>Rating:</label><br/>
+                        &#9734&#9734&#9734&#9734&#9734&#9734
+                    </td>
+                </tr>
+                -->
                 <tr ng-repeat="field in recommendation.fields" ng-switch="field.type">
                     <td ng-switch-when="TEXT">
                         <label>{{field.label}}</label><br/>
@@ -29,8 +70,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <button class="btn btn-primary btn-block">
-                            <a href="#/pool">Back To Recommendation Pool</a></button>
+                        <button class="btn btn-success btn-block"><a href="#/comments/{{recommendation._id}}">Add Comments</a></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary btn-block"><a href="#/pool">Back To Recommendation Pool</a></button>
                     </td>
                 </tr>
                 <!--
